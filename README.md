@@ -1,3 +1,11 @@
+# Playing around with Alexa skills
+
+- On the Alexa console just replace the content in the JSON Editor for the content inside of the `models/en-US.json`
+- Run build.sh to generate the lambda function in the `skill_env.zip` to be loaded into AWS
+- On the AWS lambda function, create a trigger using the Alexa Skills Kit
+- Copy your RNA from the AWS lambda function and paste it into the default region within the Endpoint page on the Alexa console
+
+
 Build an Alexa City Guide Skill in ASK Python SDK
 ============================================
 
