@@ -1,8 +1,15 @@
 {
   "interactionModel": {
     "languageModel": {
-      "invocationName": "city guide",
+      "invocationName": "playing around",
       "intents": [
+        {
+          "name": "TestIntent",
+          "samples": [
+            "Hello world"
+          ],
+          "slots": []
+        },
         {
           "name": "AboutIntent",
           "samples": [
@@ -11,7 +18,6 @@
           ],
           "slots": []
         },
-
         {
           "name": "CoffeeIntent",
           "samples": [

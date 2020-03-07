@@ -21,13 +21,28 @@ from ask_sdk_core.utils import is_intent_name, is_request_type
 from ask_sdk_model import Response
 from ask_sdk_model.ui import SimpleCard
 
-from alexa import data, util
+import data, util
 
 # Skill Builder object
 sb = SkillBuilder()
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
+
+
+class TestIntentHandler(AbstractRequestHandler):
+    """Handler for Test intent."""
+    def can_handle(self, handler_input):
+        # type: (HandlerInput) -> bool
+        return is_intent_name("TestIntent")(handler_input)
+
+    def handle(self, handler_input):
+        # type: (HandlerInput) -> Response
+        logger.info("In TestIntentHandler")
+        _ = handler_input.attributes_manager.request_attributes["_"]
+
+        handler_input.response_builder.speak(_(data.HELLO_WORLD))
+        return handler_input.response_builder.response
 
 
 # Request Handler classes
@@ -45,7 +60,7 @@ class LaunchRequestHandler(AbstractRequestHandler):
         # logger.info(_("This is an untranslated message"))
 
         speech = _(data.WELCOME)
-        speech += " " + _(data.HELP)
+        # speech += " " + _(data.HELP)
         handler_input.response_builder.speak(speech)
         handler_input.response_builder.ask(_(
             data.GENERIC_REPROMPT))
@@ -375,6 +390,7 @@ class LocalizationInterceptor(AbstractRequestInterceptor):
 
 
 # Add all request handlers to the skill.
+sb.add_request_handler(TestIntentHandler())
 sb.add_request_handler(LaunchRequestHandler())
 sb.add_request_handler(AboutIntentHandler())
 sb.add_request_handler(CoffeeIntentHandler())
