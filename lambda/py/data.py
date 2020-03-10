@@ -5,7 +5,7 @@ from gettext import gettext as _
 
 SKILL_NAME = "Gloucester Guide"
 
-WELCOME = _("Welcome to Playing Around with Alexa!")
+WELCOME = _("Welcome to the PV Application with Alexa!")
 HELP = _("Say about, to hear more about the city, or say coffee, breakfast, lunch, or dinner, to hear local restaurant suggestions, or say recommend an attraction, or say, go outside. ")
 ABOUT = _("Gloucester Massachusetts is a city on the Atlantic Ocean. A popular summer beach destination, Gloucester has a rich history of fishing and ship building.")
 STOP = _("Okay, see you next time!")
@@ -17,6 +17,8 @@ HELLO_WORLD = _("""
     <amazon:effect name="whispered">you are now safe from curses</amazon:effect>
 </speak>
 """)
+
+MY_PV_IS = ("Your PV is %.2f")
 
 CITY_DATA = {
     "city": "Gloucester",

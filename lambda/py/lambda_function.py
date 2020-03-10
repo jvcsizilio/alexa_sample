@@ -30,6 +30,21 @@ logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
 
+class PVIntentHandler(AbstractRequestHandler):
+    """Handler for PV intent."""
+    def can_handle(self, handler_input):
+        # type: (HandlerInput) -> bool
+        return is_intent_name("PVIntent")(handler_input)
+
+    def handle(self, handler_input):
+        # type: (HandlerInput) -> Response
+        logger.info("In PVIntentHandler")
+        _ = handler_input.attributes_manager.request_attributes["_"]
+
+        handler_input.response_builder.speak(_(data.MY_PV_IS % round(random.uniform(10.5,100.5), 2)))
+        return handler_input.response_builder.response
+
+
 class TestIntentHandler(AbstractRequestHandler):
     """Handler for Test intent."""
     def can_handle(self, handler_input):
@@ -390,6 +405,7 @@ class LocalizationInterceptor(AbstractRequestInterceptor):
 
 
 # Add all request handlers to the skill.
+sb.add_request_handler(PVIntentHandler())
 sb.add_request_handler(TestIntentHandler())
 sb.add_request_handler(LaunchRequestHandler())
 sb.add_request_handler(AboutIntentHandler())

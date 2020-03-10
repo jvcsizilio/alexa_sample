@@ -1,8 +1,17 @@
 {
   "interactionModel": {
     "languageModel": {
-      "invocationName": "playing around",
+      "invocationName": "pv application",
       "intents": [
+        {
+          "name": "PVIntent",
+          "samples": [
+            "What is my PV",
+            "My PV",
+            "pv"
+          ],
+          "slots": []
+        },
         {
           "name": "TestIntent",
           "samples": [
